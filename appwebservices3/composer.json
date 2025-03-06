@@ -1,0 +1,17 @@
+{
+    "name": "lenovo/appwebservices3",
+    "autoload": {
+        "psr-4": {
+            "Lenovo\\Appwebservices3\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yeferson Tello",
+            "email": "yefertello2002@gmail.com"
+        }
+    ],
+    "require": {
+        "econea/nusoap": "^0.9.18"
+    }
+}
