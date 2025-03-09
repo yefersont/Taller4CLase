@@ -34,15 +34,83 @@ class ClienteSOAP {
             }
         }
     }
+
+
+    public function resta($num1,$num2)
+    {   
+        $result = $this->cliente->call("Servidor.Resta", array("num1"=>$num1,"num2"=> $num2));
+
+
+        if ($this->cliente->fault) {
+            return ["error" => "Fault", "detalle" => $result];
+        } else {
+            $error = $this->cliente->getError();
+            if ($error) {
+                return ["error" => "Error", "detalle" => $error];
+            } else {
+                return ["resultado" => $result];
+            }
+        }
+
+    }
+    public function multiplicacion($num1, $num2)
+    {
+
+        $result = $this->cliente->call("Servidor.Multiplicacion", array("num1"=>$num1,"num2"=> $num2));
+        
+        
+        if ($this->cliente->fault) {
+            return ["error" => "Fault", "detalle" => $result];
+        } else {
+            $error = $this->cliente->getError();
+            if ($error) {
+                return ["error" => "Error", "detalle" => $error];
+            } else {
+                return ["resultado" => $result];
+            }
+        }
+
+
+    }
+
+    public function division($num1, $num2)
+    {
+
+        $result = $this->cliente->call("Servidor.Division", array("num1"=>$num1,"num2"=> $num2));
+        
+        
+        if ($this->cliente->fault) {
+            return ["error" => "Fault", "detalle" => $result];
+        } else {
+            $error = $this->cliente->getError();
+            if ($error) {
+                return ["error" => "Error", "detalle" => $error];
+            } else {
+                return ["resultado" => $result];
+            }
+        }
+
+
+    }
+
+
 }
 
 // Uso del cliente
 try {
     $clienteSOAP = new ClienteSOAP();
-    $respuesta = $clienteSOAP->sumar(10, 5);
+    $respuesta = $clienteSOAP->resta(10,5);
+    $respuesta2 = $clienteSOAP->sumar(10,5);
+    $respuesta3 = $clienteSOAP->multiplicacion(10,8);
+    $respuesta4 = $clienteSOAP->division(10,8);
 
+    
     echo "<h2>Respuesta</h2><pre>";
     print_r($respuesta);
+    print_r($respuesta2);
+    print_r($respuesta3);
+    print_r($respuesta4);
+
     echo "</pre>";
 
 } catch (Exception $e) {
